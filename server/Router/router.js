@@ -22,7 +22,7 @@ router.post("/login",async(req,res)=>{
         return res.status(400).json({error:"invalid password"})
        }
        const token=generateToken(user._id);
-       res.status(201).json({data:"logged in successfully ",token})
+       res.status(201).json({data:"logged in successfully "})
 
     } catch (error) {
         console.log(error)

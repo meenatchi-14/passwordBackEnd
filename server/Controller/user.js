@@ -9,5 +9,5 @@ export function getUserByEmail(req){
 
 
 export function generateToken(id){
-    return jwt.sign({id},process.env.SECRET_KEY).populate("data");
+    return jwt.sign({id},process.env.SECRET_KEY)
 }
