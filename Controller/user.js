@@ -150,7 +150,7 @@ const forgetPassword = async(req,res)=>{
         console.log (error)
         res.status(500).send({
             message:"Internel Server Error",
-            error:error
+            error
         })
     }
 }
