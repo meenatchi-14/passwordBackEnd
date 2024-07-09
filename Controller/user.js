@@ -94,7 +94,7 @@ const forgetPassword = async(req,res)=>{
 
             const resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
 
-            const transporter = nodemailer.createTransport({
+            const transporter = nodemailer.createTestAccount({
                 service:"gmail",
                 auth:{
                     user:process.env.EMAIL_ID,
@@ -102,7 +102,7 @@ const forgetPassword = async(req,res)=>{
 
                 }
             })
-
+    console.log("transporter",transporter)
             const mailOptions = {
                 from: process.env.EMAIL_ID,
                 to : user.email,
