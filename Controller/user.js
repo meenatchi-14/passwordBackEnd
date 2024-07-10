@@ -94,11 +94,10 @@ const forgetPassword = async(req,res)=>{
 
             const resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
 
-            const transporter = nodemailer.createTestAccount({
+            const transporter = nodemailer.createTransport({
                 service:"gmail",
                 auth:{
-                    user:process.env.EMAIL_ID,
-                    password:process.env.EMAIL_PASSWORD,
+                    user:req.body.email,
 
                 }
             })
@@ -149,8 +148,7 @@ const forgetPassword = async(req,res)=>{
     } catch (error) {
         console.log (error)
         res.status(500).send({
-            message:"Internel Server Error",
-            error
+            message:"Internel Server Error"
         })
     }
 }
