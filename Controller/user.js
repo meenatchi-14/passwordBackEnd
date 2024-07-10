@@ -78,7 +78,6 @@ const getAllUser = async(req,res)=>{
         })
     }
 }
-
 const forgetPassword = async(req,res)=>{
     try {
         let user = await userModel.findOne({email:req.body.email})
@@ -97,11 +96,12 @@ const forgetPassword = async(req,res)=>{
             const transporter = nodemailer.createTransport({
                 service:"gmail",
                 auth:{
-                    user:req.body.email,
+                    user:process.env.EMAIL_ID,
+                    pass:process.env.EMAIL_PASSWORD,
 
                 }
             })
-    console.log("transporter",transporter)
+
             const mailOptions = {
                 from: process.env.EMAIL_ID,
                 to : user.email,
@@ -152,7 +152,6 @@ const forgetPassword = async(req,res)=>{
         })
     }
 }
-
 const resetPassword = async(req,res)=>{
     
     try {
