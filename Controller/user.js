@@ -2,6 +2,7 @@ import userModel from "../model/user.js";
 import auth from "../common/auth.js";
 import randomstring from "randomstring";
 import nodemailer from 'nodemailer'
+
 const signup = async(req,res)=>{
     try {
         let user = await userModel.findOne({email:req.body.email})
@@ -97,7 +98,7 @@ const forgetPassword = async(req,res)=>{
                 service:"gmail",
                 auth:{
                     user:process.env.EMAIL_ID,
-                    pass:process.env.EMAIL_PASSWORD,
+                    password:process.env.EMAIL_PASSWORD,
 
                 }
             })
