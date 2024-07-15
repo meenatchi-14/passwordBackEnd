@@ -22,12 +22,7 @@ const userSchema = new mongoose.Schema ({
         type:String,
         required:[true,"password is required"]
 
-     },
-
-     randomString:{
-        type:String
      }
-
 
 },
 {
