@@ -1,6 +1,7 @@
 import userModel from "../model/user.js";
 import auth from "../common/auth.js";
 import nodemailer from "nodemailer"
+process.env
 
 const signup = async(req,res)=>{
     try {
@@ -144,9 +145,7 @@ const forgetPassword = async(req,res)=>{
     }
 }
 const resetPassword = async(req,res)=>{
-    
     try {
-        //const {randomString,expitationTimestamp}= req.params
         const user = await userModel.findOne({email:req.body.email})
         if(!user)
         {
@@ -154,6 +153,7 @@ const resetPassword = async(req,res)=>{
                 message:`User with ${req.body.email} is not Found pleas signup`
             })
         }
+
              else{
                 if(req.body.newPassword){
                     const newPassword = await auth.hashPassword(req.body.newPassword)
