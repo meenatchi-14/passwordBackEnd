@@ -86,50 +86,50 @@ const forgetPassword = async(req,res)=>{
         {
             const resetLink = `${process.env.ResetUrl}/reset-password`
             console.log(resetLink)
-            let transporter = nodemailer.createTransport({
-                service: 'gmail',  
-                auth:{
-                    user:process.env.EMAIL_ID,
-                    pass:process.env.EMAIL_PASSWORD,
+            // let transporter = nodemailer.createTransport({
+            //     service: 'gmail',  
+            //     auth:{
+            //         user:process.env.EMAIL_ID,
+            //         pass:process.env.EMAIL_PASSWORD,
 
-                }
-            })
-            console.log(transporter);
+            //     }
+            // })
+            // console.log(transporter);
 
-            const mailOptions = {
-                from: process.env.EMAIL_ID,
-                to : user.email,
-                subject:"Password-Reset-Link",
-                html:`
-                <p> Dear ${user.userName} , </p>
+            // const mailOptions = {
+            //     from: process.env.EMAIL_ID,
+            //     to : user.email,
+            //     subject:"Password-Reset-Link",
+            //     html:`
+            //     <p> Dear ${user.userName} , </p>
                 
-                <p>Sorry to hear you’re having trouble logging into your account. We got a message that you forgot your password. If this was you, you can get right back into your account or reset your password now. </p>
-                <p> Click the following Link to reset your password \n ${resetLink} </p>
+            //     <p>Sorry to hear you’re having trouble logging into your account. We got a message that you forgot your password. If this was you, you can get right back into your account or reset your password now. </p>
+            //     <p> Click the following Link to reset your password \n ${resetLink} </p>
 
-                <p>If you didn’t request a login link or a password reset, you can ignore this message. </P>
+            //     <p>If you didn’t request a login link or a password reset, you can ignore this message. </P>
 
-                <p> Only people who know your account password or click the login link in this email can log into your account. </P>
-                `
+            //     <p> Only people who know your account password or click the login link in this email can log into your account. </P>
+            //     `
 
-            }
+            // }
            
-            transporter.sendMail(mailOptions,function(error,info){
-                if(error){
-                    console.log(error)
-                    res.status(500).send({
-                        message:"Failed to send the password reset mail"
-                    })
-                }
-                else
-                {
-                    console.log("password reset email sent" + info.response)
-                    res.status(201).send({
-                        message:"password reset mail sent sucessfully"
-                    })
-                }
-                 user.save()
-                res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
-            })
+            // transporter.sendMail(mailOptions,function(error,info){
+            //     if(error){
+            //         console.log(error)
+            //         res.status(500).send({
+            //             message:"Failed to send the password reset mail"
+            //         })
+            //     }
+            //     else
+            //     {
+            //         console.log("password reset email sent" + info.response)
+            //         res.status(201).send({
+            //             message:"password reset mail sent sucessfully"
+            //         })
+            //     }
+            //      user.save()
+            //     res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
+            // })
         }
         else
         {
