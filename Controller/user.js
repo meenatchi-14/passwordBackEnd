@@ -100,9 +100,9 @@ console.log(resetLink)
                 service:'gmail',
                 auth:{
                     user:process.env.EMAIL_ID,
-                    pass:process.env.EMAIL_PASSWORD
+                    pass:process.env.EMAIL_PASSWORD,
 
-                }
+                },
             })
             console.log(transporter)
             var mailOptions = {
@@ -183,7 +183,7 @@ const resetPassword = async(req,res)=>{
                     const newPassword = await auth.hashPassword(req.body.newPassword)
 
                     user.password = newPassword
-                    user.randomString=null
+                    user.randomString=randomString
                     await user.save()
 
                     res.status(201).send({
