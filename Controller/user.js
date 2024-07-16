@@ -1,6 +1,8 @@
 import userModel from "../model/user.js";
 import auth from "../common/auth.js";
-import nodemailer from "nodemailer"
+import randomstring from "randomstring";
+import nodemailer from 'nodemailer';
+
 process.env
 
 const signup = async(req,res)=>{
@@ -84,52 +86,62 @@ const forgetPassword = async(req,res)=>{
         let user = await userModel.findOne({email:req.body.email})
         if(user)
         {
-            const resetLink = `${process.env.ResetUrl}/reset-password`
-            console.log(resetLink)
-            // let transporter = nodemailer.createTransport({
-            //     service: 'gmail',  
-            //     auth:{
-            //         user:process.env.EMAIL_ID,
-            //         pass:process.env.EMAIL_PASSWORD,
+            var randomString = randomstring.generate({
+                length:10,
+                charset:"alphanumeric"
+            })
+            var expitationTimestamp = Date.now() + 2 * 60 * 1000
 
-            //     }
-            // })
-            // console.log(transporter);
+            console.log(expitationTimestamp)
 
-            // const mailOptions = {
-            //     from: process.env.EMAIL_ID,
-            //     to : user.email,
-            //     subject:"Password-Reset-Link",
-            //     html:`
-            //     <p> Dear ${user.userName} , </p>
+            var resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
+console.log(resetLink)
+            var transporter = nodemailer.createTransport({
+                service:'gmail',
+                auth:{
+                    user:process.env.EMAIL_ID,
+                    pass:process.env.EMAIL_PASSWORD
+
+                }
+            })
+            console.log(transporter)
+            var mailOptions = {
+                from: process.env.EMAIL_ID,
+                to : user.email,
+                subject:"Password-Reset-Link",
+                html:`
+                <p> Dear ${user.userName} , </p>
                 
-            //     <p>Sorry to hear you’re having trouble logging into your account. We got a message that you forgot your password. If this was you, you can get right back into your account or reset your password now. </p>
-            //     <p> Click the following Link to reset your password \n ${resetLink} </p>
+                <p>Sorry to hear you’re having trouble logging into your account. We got a message that you forgot your password. If this was you, you can get right back into your account or reset your password now. </p>
+                <p> Click the following Link to reset your password \n ${resetLink} </p>
 
-            //     <p>If you didn’t request a login link or a password reset, you can ignore this message. </P>
+                <p>If you didn’t request a login link or a password reset, you can ignore this message. </P>
 
-            //     <p> Only people who know your account password or click the login link in this email can log into your account. </P>
-            //     `
+                <p> Only people who know your account password or click the login link in this email can log into your account. </P>
+                `
 
-            // }
-           
-            // transporter.sendMail(mailOptions,function(error,info){
-            //     if(error){
-            //         console.log(error)
-            //         res.status(500).send({
-            //             message:"Failed to send the password reset mail"
-            //         })
-            //     }
-            //     else
-            //     {
-            //         console.log("password reset email sent" + info.response)
-            //         res.status(201).send({
-            //             message:"password reset mail sent sucessfully"
-            //         })
-            //     }
-            //      user.save()
-            //     res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
-            // })
+                
+                
+            }
+            console.log(mailOptions)
+            transporter.sendMail(mailOptions,function(error,info){
+                if(error){
+                    console.log(error)
+                    res.status(500).send({
+                        message:"Failed to send the password reset mail"
+                    })
+                }
+                else
+                {
+                    console.log("password reset email sent" + info.response)
+                    res.status(201).send({
+                        message:"password reset mail sent sucessfully"
+                    })
+                }
+                user.randomString=randomString
+                 user.save()
+                res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
+            })
         }
         else
         {
@@ -144,20 +156,34 @@ const forgetPassword = async(req,res)=>{
         })
     }
 }
+
 const resetPassword = async(req,res)=>{
+    
     try {
-        const user = await userModel.findOne({email:req.body.email})
-        if(!user)
+        const {randomString,expitationTimestamp}= req.params
+    
+        const user = await userModel.findOne({randomString:randomString})
+
+        if(!user || user.randomString !== randomString)
         {
-            res.status(404).send({
-                message:`User with ${req.body.email} is not Found pleas signup`
+            console.log(user)
+            res.status(400).send({
+                message:"Invalid Random Sting"
             })
         }
-
-             else{
+        else
+        {
+            if(expitationTimestamp && expitationTimestamp<Date.now())
+            {
+                res.status(400).send({
+                    message:"expirationTimestamp token has expired. Please request a new reset link."
+                })
+            } else{
                 if(req.body.newPassword){
                     const newPassword = await auth.hashPassword(req.body.newPassword)
+
                     user.password = newPassword
+                    user.randomString=null
                     await user.save()
 
                     res.status(201).send({
@@ -169,8 +195,8 @@ const resetPassword = async(req,res)=>{
                     })
                 }
             }
-        
-         } catch (error) {
+        }
+    } catch (error) {
         console.log(error);
         res.status(500).send({
         message: "Internal server error",
