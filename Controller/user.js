@@ -119,12 +119,9 @@ console.log(resetLink)
 
                 <p> Only people who know your account password or click the login link in this email can log into your account. </P>
                 `
-
-                
-                
             }
             console.log(mailOptions)
-            transporter.sendMail(mailOptions,function(error,info){
+            transporter.sendMail(mailOptions,(error,info)=>{
                 if(error){
                     console.log(error)
                     res.status(500).send({
