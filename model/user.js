@@ -1,7 +1,7 @@
 import mongoose from "./index.js"
 
 const validateEmail = (e)=>{
-    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var emailPattern = /^[a-zA-Z0-9._-%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailPattern.test(e); 
 }
 
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema ({
 
      },
      randomString:{
-        type:String
+        type:String 
      }
 
 },

@@ -2,9 +2,6 @@ import userModel from "../model/user.js";
 import auth from "../common/auth.js";
 import randomstring from "randomstring";
 import nodemailer from 'nodemailer';
-
-process.env
-
 const signup = async(req,res)=>{
     try {
         let user = await userModel.findOne({email:req.body.email})
