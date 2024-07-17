@@ -92,7 +92,7 @@ const forgetPassword = async(req,res)=>{
             console.log(expitationTimestamp)
 
             var resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
-console.log(resetLink)
+
             var transporter = nodemailer.createTransport({
                 service:'gmail',
                 auth:{
@@ -109,7 +109,9 @@ console.log(resetLink)
                 html:`
                 <p> Dear ${user.userName} , </p>
                 
-                <p>Sorry to hear you’re having trouble logging into your account. We got a message that you forgot your password. If this was you, you can get right back into your account or reset your password now. </p>
+                <p>Sorry to hear you’re having trouble logging into your account.
+                 We got a message that you forgot your password. If this was you, 
+                you can get right back into your account or reset your password now. </p>
                 <p> Click the following Link to reset your password \n ${resetLink} </p>
 
                 <p>If you didn’t request a login link or a password reset, you can ignore this message. </P>
