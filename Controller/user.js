@@ -94,14 +94,14 @@ const forgetPassword = async(req,res)=>{
             var resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
 
             var transporter = nodemailer.createTransport({
-                service:'gmail',
+                service:'smtp.ethereal.email',
                 auth:{
                     user:process.env.EMAIL_ID,
                     pass:process.env.EMAIL_PASSWORD,
 
                 },
             })
-            console.log(transporter)
+           // console.log(transporter)
             var mailOptions = {
                 from: process.env.EMAIL_ID,
                 to : user.email,
@@ -119,25 +119,19 @@ const forgetPassword = async(req,res)=>{
                 <p> Only people who know your account password or click the login link in this email can log into your account. </P>
                 `
             }
-            console.log(mailOptions)
-            transporter.sendMail(mailOptions,(error,info)=>{
-                if(error){
-                    console.log(error)
-                    res.status(500).send({
-                        message:"Failed to send the password reset mail"
-                    })
+            //console.log(mailOptions)
+            var mail=await transporter.sendMail(mailOptions,function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
                 }
-                else
-                {
-                    console.log("password reset email sent" + info.response)
-                    res.status(201).send({
-                        message:"password reset mail sent sucessfully"
-                    })
-                }
-                user.randomString=randomString
-                 user.save()
-                res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
-            })
+              });
+            // console.log(mail);
+             user.randomString=randomString
+                 user.save() 
+            
+            res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
         }
         else
         {
