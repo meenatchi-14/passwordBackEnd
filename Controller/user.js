@@ -94,7 +94,7 @@ const forgetPassword = async(req,res)=>{
             var resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
 
             var transporter = nodemailer.createTransport({
-                service:'smtp.ethereal.email',
+                service:'Gmail',
                 auth:{
                     user:process.env.EMAIL_ID,
                     pass:process.env.EMAIL_PASSWORD,
@@ -120,7 +120,7 @@ const forgetPassword = async(req,res)=>{
                 `
             }
             //console.log(mailOptions)
-            var mail=await transporter.sendMail(mailOptions,function(error, info){
+            var mail= await transporter.sendMail(mailOptions,function(error, info){
                 if (error) {
                   console.log(error);
                 } else {
