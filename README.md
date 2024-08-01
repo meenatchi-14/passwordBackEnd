@@ -20,7 +20,7 @@ Front End code: https://github.com/meenatchi-14/passwordForntEnd.git
 Signup
 <li>
     
-    POST METHOD
+    POST METHOD:
     Write API to create Signup  -  
        https://passwordbackend-6yrd.onrender.com/user/signup
 </li>
@@ -28,7 +28,7 @@ Signup
 Login
 <li>
 
-    POST METHOD
+    POST METHOD:
     Write API to create Login  - 
      https://passwordbackend-6yrd.onrender.com/user/login
 </li>
@@ -36,8 +36,7 @@ Login
 Get All User
 <li>
 
-
-   GET METHOD
+   GET METHOD:
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
@@ -45,7 +44,7 @@ Get All User
 forget-password
 <li>
 
-    POST METHOD
+    POST METHOD:
     Write API to create forget-password  - 
     https://passwordbackend-6yrd.onrender.com/user/forget-password
 </li>
@@ -53,7 +52,7 @@ forget-password
 reset-password
 <li>
 
-    POST METHOD
+    POST METHOD:
     Write API to create reset-password  - 
     https://passwordbackend-6yrd.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
 </li>
