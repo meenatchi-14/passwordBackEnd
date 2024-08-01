@@ -32,18 +32,6 @@ Login
     Write API to create Login  - 
      https://passwordbackend-6yrd.onrender.com/user/login
 </li>
- </ul>
- <ul>
-Get All User
-<li>
-
-   GET METHOD:
-    Write API to get All users  - 
-     https://passwordbackend-6yrd.onrender.com/user/getAllUser
-</li>
-
-</ul>
-<ul>
 forget-password
 <li>
 
@@ -59,6 +47,16 @@ reset-password
     Write API to create reset-password  - 
     https://passwordbackend-6yrd.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
 </li>
+</ul>
+ <ul>
+Get All User
+<li>
+
+   GET METHOD:
+    Write API to get All users  - 
+     https://passwordbackend-6yrd.onrender.com/user/getAllUser
+</li>
+
 </ul>
 
 
