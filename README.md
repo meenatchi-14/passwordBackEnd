@@ -1,4 +1,4 @@
-# Password set 
+# Password-set 
 <h4>password set with Database API development</h4>
 <br>
  Render : https://passwordbackend-6yrd.onrender.com
@@ -6,11 +6,13 @@
 <br>
 Link to netlify : https://guileless-bienenstitch-7cfe80.netlify.app/
 <br><br>
-# github
+
+# GitHub
 <br>
 Clone the repository git: https://github.com/meenatchi-14/passwordBackEnd.git
-
+<br>
 Front End code: https://github.com/meenatchi-14/passwordForntEnd.git
+<br>
 <ul>
 Register 
 <li>
