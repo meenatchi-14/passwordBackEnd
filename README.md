@@ -47,8 +47,7 @@ reset-password
     Write API to create reset-password  - 
     https://passwordbackend-6yrd.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
 </li>
-</ul>
- <ul>
+<br>
 Get All User
 <li>
     POST METHOD:
