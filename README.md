@@ -13,14 +13,19 @@ Clone the repository git: https://github.com/meenatchi-14/passwordBackEnd.git
 <br>
 Front End code: https://github.com/meenatchi-14/passwordForntEnd.git
 <br>
+
 <ul>
-Register 
+Register
+<br>
+Signup
 <li>
     
     POST METHOD
     Write API to create Signup  -  
        https://passwordbackend-6yrd.onrender.com/user/signup
 </li>
+<br>
+Login
 <li>
     POST METHOD
     Write API to create Login  - 
