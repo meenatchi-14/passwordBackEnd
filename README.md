@@ -21,15 +21,14 @@ Register
      https://passwordbackend-6yrd.onrender.com/user/login
 </li>
  
-</ul>
-<ul>Get All User
+
+Get All User
 <li>
    GET METHOD
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
-</ul>
-<ul>forget-password
+forget-password
 <li>
     POST METHOD
     Write API to create forget-password  - 
