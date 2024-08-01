@@ -16,7 +16,6 @@ Front End code: https://github.com/meenatchi-14/passwordForntEnd.git
 <br>
 <br>
 <ul>
-Register
 <br>
 Signup
 <li>
@@ -36,6 +35,7 @@ Login
  <br>
 Get All User
 <li>
+
 
    GET METHOD
     Write API to get All users  - 
