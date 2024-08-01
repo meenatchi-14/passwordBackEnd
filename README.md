@@ -51,7 +51,7 @@ reset-password
  <ul>
 Get All User
 <li>
-    GET :
+    POST METHOD :
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
