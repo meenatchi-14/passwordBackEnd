@@ -2,10 +2,10 @@
 
 <h4>password set with Database API development</h4>
 <br>
- Render : https://passwordbackend-1mre.onrender.com
+ Render : https://passwordbackend-6yrd.onrender.com
 <br>
 <br>
-Link to FrontEnd : 
+Link to FrontEnd : https://guileless-bienenstitch-7cfe80.netlify.app/
 <br><br>
 <ul>
 Register 
@@ -13,12 +13,12 @@ Register
     
     POST METHOD
     Write API to create Signup  -  
-       https://passwordbackend-1mre.onrender.com/user/signup
+       https://passwordbackend-6yrd.onrender.com/user/signup
 </li>
 <li>
     POST METHOD
     Write API to create Login  - 
-     https://passwordbackend-1mre.onrender.com/user/login
+     https://passwordbackend-6yrd.onrender.com/user/login
 </li>
  
 </ul>
@@ -26,14 +26,22 @@ Register
 <li>
    GET METHOD
     Write API to get All users  - 
-     https://passwordbackend-1mre.onrender.com/user/getAllUser
+     https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
+</ul>
+<ul>forget-password
+<li>
+    POST METHOD
+    Write API to create forget-password  - 
+    https://passwordbackend-6yrd.onrender.com/user/forget-password
+</li>
+
 </ul>
 <ul>reset-password
 <li>
     POST METHOD
     Write API to create reset-password  - 
-    https://passwordbackend-1mre.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
+    https://passwordbackend-6yrd.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
 </li>
 
 </ul>
