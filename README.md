@@ -32,7 +32,8 @@ Login
     Write API to create Login  - 
      https://passwordbackend-6yrd.onrender.com/user/login
 </li>
- <br>
+ </ul>
+ <ul>
 Get All User
 <li>
 
@@ -40,7 +41,9 @@ Get All User
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
-<br>
+
+</ul>
+<ul>
 forget-password
 <li>
 
