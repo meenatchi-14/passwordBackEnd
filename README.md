@@ -36,7 +36,7 @@ Login
 Get All User
 <li>
 
-   GET METHOD:
+   GET:
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
 </li>
