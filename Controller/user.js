@@ -87,7 +87,7 @@ const forgetPassword = async(req,res)=>{
                 length:10,
                 charset:"alphanumeric"
             })
-            var expitationTimestamp = Date.now() + 2 * 60 * 1000
+            var expitationTimestamp = Date.now() + 2 * 60 * 1000 ;
 
             console.log(expitationTimestamp)
 
@@ -128,8 +128,8 @@ const forgetPassword = async(req,res)=>{
                 }
               });
             // console.log(mail);
-             user.randomString=randomString
-                 user.save() 
+              user.randomString=randomString
+              user.save() 
             
             res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
         }
