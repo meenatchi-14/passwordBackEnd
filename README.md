@@ -48,14 +48,14 @@ reset-password
     https://passwordbackend-6yrd.onrender.com/user/reset-password/:randomString/:expitationTimestamp.
 </li>
 </ul>
- <ul>
+
 Get All User
-<li>
+ <ul>
+
 
    GET METHOD:
     Write API to get All users  - 
      https://passwordbackend-6yrd.onrender.com/user/getAllUser
-</li>
 
 </ul>
 
