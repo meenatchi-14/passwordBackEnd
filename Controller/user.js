@@ -92,7 +92,10 @@ const forgetPassword = async(req,res)=>{
             console.log(expitationTimestamp)
 
             var resetLink = `${process.env.ResetUrl}/reset-password/${randomString}/${expitationTimestamp}`
-
+            user.randomString=randomString
+            user.save() 
+          
+          res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
             var transporter = nodemailer.createTransport({
                 service:'Gmail',
                 auth:{
@@ -128,10 +131,7 @@ const forgetPassword = async(req,res)=>{
                 }
               });
             // console.log(mail);
-              user.randomString=randomString
-              user.save() 
             
-            res.status(201).send({message:"Reset password email sent successfully and random string update in db"})
         }
         else
         {
