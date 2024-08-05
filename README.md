@@ -4,7 +4,7 @@
  Render : https://passwordbackend-6yrd.onrender.com
 <br>
 <br>
-Link to netlify : https://guileless-bienenstitch-7cfe80.netlify.app/
+Link to netlify : https://master--magenta-tanuki-c548b5.netlify.app/
 <br><br>
 
 # GitHub
